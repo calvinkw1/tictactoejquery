@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test!</title>
+	<link rel="stylesheet" href="tictactoe.css">
+	<script src="jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id = "container">
+		<div class="row">
+			<div id="num1" class="square row1"></div>
+			<div id="num2" class="square row1"></div>
+			<div id="num3" class="square row1"></div>
+		</div>
+		<div class="row">
+			<div id="num4" class="square"></div>
+			<div id="num5" class="square"></div>
+			<div id="num6" class="square"></div>
+		</div>
+		<div class="row">
+			<div id="num7" class="square"></div>
+			<div id="num8" class="square"></div>
+			<div id="num9" class="square"></div>
+		</div>
+	</div>
+<script>
+	var wasLastClickX = false;
+	$(".square").click(function() {
+		if ($(this).html() == "") {
+			if (wasLastClickX == true) {
+				$(this).html("o");
+				wasLastClickX = false;
+			} else {
+				$(this).html("x");
+				wasLastClickX = true;
+			}
+			checkWin();
+		}
+	});
+
+	function checkWin(){
+		//Top row
+		if (	$($(".square")[0]).html() == $($(".square")[1]).html() && $($(".square")[0]).html() == $($(".square")[2]).html() && $($(".square")[0]).html() != ""){
+			alert("Winner!")
+		}
+		//Middle row
+		if (	$($(".square")[3]).html() == $($(".square")[4]).html() && $($(".square")[3]).html() == $($(".square")[5]).html() && $($(".square")[3]).html() != ""){
+			alert("Winner!")
+		}
+		//Bottom row
+		if (	$($(".square")[6]).html() == $($(".square")[7]).html() && $($(".square")[6]).html() == $($(".square")[8]).html() && $($(".square")[6]).html() != ""){
+			alert("Winner!")
+		}
+		//Left column
+		if (	$($(".square")[0]).html() == $($(".square")[3]).html() && $($(".square")[0]).html() == $($(".square")[6]).html() && $($(".square")[0]).html() != ""){
+			alert("Winner!")
+		}
+		//Middle column
+		if (	$($(".square")[1]).html() == $($(".square")[4]).html() && $($(".square")[1]).html() == $($(".square")[7]).html() && $($(".square")[1]).html() != ""){
+			alert("Winner!")
+		}
+		//Bottom column
+		if (	$($(".square")[2]).html() == $($(".square")[5]).html() && $($(".square")[2]).html() == $($(".square")[8]).html() && $($(".square")[2]).html() != ""){
+			alert("Winner!")
+		}
+		//Diagonal from top left
+		if (	$($(".square")[0]).html() == $($(".square")[4]).html() && $($(".square")[0]).html() == $($(".square")[8]).html() && $($(".square")[0]).html() != ""){
+			alert("Winner!")
+		}
+		//Diagonal from top right
+		if (	$($(".square")[2]).html() == $($(".square")[4]).html() && $($(".square")[2]).html() == $($(".square")[6]).html() && $($(".square")[2]).html() != ""){
+			alert("Winner!")
+		}
+		
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/*#num1 {
+	background-color: black;
+	height: 400px;
+	width: 2px;
+	margin-left: 130px;
+	position: absolute;
+}
+
+#num2 {
+	background-color: black;
+	height: 400px;
+	width: 2px;
+	margin-left: 260px;
+	position: absolute;
+}
+
+#num3 {
+	background-color: black;
+	height: 2px;
+	width: 400px;
+	margin-top: 125px;
+	position: absolute;
+
+}
+
+#num4 {
+	background-color: black;
+	height: 2px;
+	width: 400px;
+	margin-top: 250px;
+	position: absolute;
+}*/
+
+.square {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+	display: table-cell;
+	vertical-align: top;
+	text-align: center;
+	font-size: 400%;
+}
+
+/*.x {
+	color: red;
+}
+
+.o {
+	color: blue;
+}*/
+
+
+
+/*.row1 {}*/
+
+#num1, #num4, #num7 {
+	border-left: none;
+}
+
+#num1, #num2, #num3 {
+	border-top: none;
+}
+
+#num3, #num6, #num9 {
+	border-right: none;
+}
+
+#num7, #num8, #num9 {
+	border-bottom: none;
+}

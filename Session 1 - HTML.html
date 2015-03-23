@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Toe!</title>
+	<link rel="stylesheet" href="tictactoe.css">
+	<script src="jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id = "container">
+		<div class="row">
+			<div id="num1" class="square row1"></div>
+			<div id="num2" class="square row1"></div>
+			<div id="num3" class="square row1"></div>
+		</div>
+		<div class="row">
+			<div id="num4" class="square"></div>
+			<div id="num5" class="square"></div>
+			<div id="num6" class="square"></div>
+		</div>
+		<div class="row">
+			<div id="num7" class="square"></div>
+			<div id="num8" class="square"></div>
+			<div id="num9" class="square"></div>
+		</div>
+	</div>
+<button id="reset">Reset Game</button>
+
+<script>
+	var counter=0;
+	var gameOver=false;
+	$(".square").click(function() {
+		if ($(this).html() == "" && !gameOver) {
+			if ((counter%2) == 0) {
+				$(this).html("x");
+				counter = counter + 1
+			} else {
+				$(this).html("o");
+				counter++
+			}
+			checkWin();
+			if (!gameOver) {
+				if (checkTie() == true){
+					alert("Tie! Try again!");
+					gameOver = true;
+				}
+			}
+		}
+	});
+
+	reset()
+
+	function reset(){
+			$("#reset").click(function() {
+				gameOver = false;
+				for (var counter=0; counter < $(".square").length; counter++){
+					$($(".square")[counter]).html("")
+				}
+			// $(".square").html("")
+			}
+		)};
+
+		//create a for loop to loop through 0...8 squares and then change html's of those squares to "" (blank)
+		//use the text-align, line-height, font-size properties to try and aesthetically improve the 'x' and 'o'.
+		//http://learn.themakersquare.com/courses/prework
+			//do the Prework Frontend: js track
+			//do the Prework: js basics and functions 
+
+	function checkTie(){
+		for (var counter=0; counter < $(".square").length; counter++){
+			if ($($(".square")[counter]).html() == "") {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function checkWin(){
+		//Top row
+		// if (	$($(".square")[0]).html() == $($(".square")[1]).html() && $($(".square")[0]).html() == $($(".square")[2]).html() && $($(".square")[0]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		//Horizontal rows
+		for (var counter=1; counter <= 7; counter=counter+3){
+			if (	$($(".square")[counter-1]).html() == $($(".square")[counter]).html() && $($(".square")[counter-1]).html() == $($(".square")[counter+1]).html() && $($(".square")[counter-1]).html() != ""){
+				alert("Winner!");
+				gameOver = true;
+			}
+		}
+
+		//Vertical rows
+		for (var counter=3; counter <= 5; counter=counter+1){
+			debugger
+			if (	$($(".square")[counter-3]).html() == $($(".square")[counter]).html() && $($(".square")[counter+3]).html() == $($(".square")[counter]).html() && $($(".square")[counter-3]).html() != ""){
+				alert("Winner!");
+				gameOver = true;
+			}
+		}
+		//Diagonal from top left
+		if (	$($(".square")[0]).html() == $($(".square")[4]).html() && $($(".square")[0]).html() == $($(".square")[8]).html() && $($(".square")[0]).html() != ""){
+			alert("Winner!");
+			gameOver = true;
+		}
+		//Diagonal from top right
+		if (	$($(".square")[2]).html() == $($(".square")[4]).html() && $($(".square")[2]).html() == $($(".square")[6]).html() && $($(".square")[2]).html() != ""){
+			alert("Winner!");
+			gameOver = true;
+		}
+
+		//Diagonal Top Left -> Right
+		// for (var counter=4; counter <= 8; counter=counter+4){
+		// 	debugger
+		// 	if (	$($(".square")[counter-4]).html() == $($(".square")[counter]).html() && $($(".square")[counter-4]).html() == $($(".square")[counter+4]).html() && $($(".square")[counter-4]).html() != ""){
+		// 		alert("Winner!");
+		// 		gameOver = true;
+		// 	}
+		// }
+		// //Diagonal Top Right -> Left
+		// for (var counter=2; counter <= 8; counter=counter+4){
+		// 	debugger
+		// 	if (	$($(".square")[counter-4]).html() == $($(".square")[counter]).html() && $($(".square")[counter-4]).html() == $($(".square")[counter+4]).html() && $($(".square")[counter-4]).html() != ""){
+		// 		alert("Winner!");
+		// 		gameOver = true;
+		// 	}
+		// }
+
+		// //Middle row
+		// if (	$($(".square")[3]).html() == $($(".square")[4]).html() && $($(".square")[3]).html() == $($(".square")[5]).html() && $($(".square")[3]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		// //Bottom row
+		// if (	$($(".square")[6]).html() == $($(".square")[7]).html() && $($(".square")[6]).html() == $($(".square")[8]).html() && $($(".square")[6]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		//Left column
+		// if (	$($(".square")[0]).html() == $($(".square")[3]).html() && $($(".square")[0]).html() == $($(".square")[6]).html() && $($(".square")[0]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		// //Middle column
+		// if (	$($(".square")[1]).html() == $($(".square")[4]).html() && $($(".square")[1]).html() == $($(".square")[7]).html() && $($(".square")[1]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		// //Bottom column
+		// if (	$($(".square")[2]).html() == $($(".square")[5]).html() && $($(".square")[2]).html() == $($(".square")[8]).html() && $($(".square")[2]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		// //Diagonal from top left
+		// if (	$($(".square")[0]).html() == $($(".square")[4]).html() && $($(".square")[0]).html() == $($(".square")[8]).html() && $($(".square")[0]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		// //Diagonal from top right
+		// if (	$($(".square")[2]).html() == $($(".square")[4]).html() && $($(".square")[2]).html() == $($(".square")[6]).html() && $($(".square")[2]).html() != ""){
+		// 	alert("Winner!");
+		// 	gameOver = true;
+		// }
+		
+	}
+</script>
+</body>
+</html>
